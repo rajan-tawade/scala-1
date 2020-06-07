@@ -1,0 +1,17 @@
+val list1 = List(("apple",List(100),"Banana"),("apple",List(200),"Banana"),("apple",List(300),"Banana"))
+
+val df = list1.toDF("fruit1","list1","fruit2")
+
+val list2 = df.select("list1").collect().map(_.getAs[Seq[Int]]("list1")(0).toString).toList
+val frt1 = df.select("fruit1").distinct.collect().map(_.getString(0)).toList(0).toString
+val frt2 = df.select("fruit2").distinct.collect().map(_.getString(0)).toList(0).toString
+
+var list_str: List[String] = List()
+var list_final: List[String, List, String] = List()
+
+
+list_str = frt1.toString :: list_str
+var list_final =  list2.toList :: list_str
+list_final = frt2.toString :: list_final
+
+list_final
