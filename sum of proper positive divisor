@@ -1,0 +1,41 @@
+/*
+// Sample code to perform I/O:
+
+val name = scala.io.StdIn.readLine()        // Reading input from STDIN
+println("Hi, " + name + ".")                // Writing output to STDOUT
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+object Main{
+  var cond = true
+  def main(args: Array[String]){
+  var list_str: List[Int] = List()
+      while(cond){
+      val N = scala.io.StdIn.readLine()
+      if( N != null ) {
+      list_str = N.toInt :: list_str
+      }else{
+      cond = false
+      }
+      }
+   val list2 = list_str.reverse.drop(1)
+   
+   //println(list2) 
+   for( N <- list2)
+      {
+        var sum = 0
+        for (x <- 1 to N -1 ){
+           if(N % x == 0){
+             sum += x
+           }
+        }
+        if (N == sum ){
+            println("YES")
+        } else{
+            println("NO")
+        }
+      }
+  }
+}
